@@ -1,0 +1,33 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1> Converstaion List: </h1>
+        <ul>
+        {% for c in conversations %}
+            <li> <a href="/users/list/{{c.id}}"> {{ c.name }} </a> </li>
+        {% endfor %}
+        </ul>
+        
+        <br /><br /><br /><br />
+
+        {% for m in messages %}
+            Sender: {{ m.sender_id.first_name }} {{ m.sender_id.last_name }}
+            <br/>
+            Text: {{ m.text }}
+            <br />
+            Conversation: {{ m.conversation_id.name }}
+            <hr />
+
+        {% endfor %}
+
+
+        <form action="/users/signup/" method="POST">
+            Message:<br>
+            <input type="text" name="message" value="Type something...">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form> 
+    </body>
+</html>
